@@ -17,33 +17,31 @@
     .projects { display:grid; grid-template-columns: 1fr; gap: 30px; margin-top: 30px; }
     @media(min-width:800px){ .projects{ grid-template-columns: repeat(2,1fr);} }
     .card { border:1px solid #ccc; border-radius: 12px; padding:20px; background:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.08); display:flex; flex-direction:column; gap:14px; }
-    .image-holder { width:100%; height:180px; background:#eee; border:1px dashed #aaa; border-radius: 8px; display:flex; align-items:center; justify-content:center; color:#666; font-size:14px; }
     h2 { margin:0; font-size:22px; }
     p { margin:0; line-height:1.6; }
     ul { margin:0; padding-left:20px; }
     li { margin:6px 0; }
     .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
     .tag { background:#f0f0f0; border:1px solid #ccc; border-radius:999px; padding:4px 10px; font-size:12px; }
+    /* Carousel inside cards */
+    .carousel-inner img { width:100%; height:auto; border-radius:8px; }
+    .carousel-caption { background: rgba(0,0,0,0.6); border-radius: 6px; font-size: 14px; padding: 4px 8px; }
   </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <div class="row w-100">
-        <div class="col-sm">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">About</a></li>
-              <li class="nav-item"><a class="nav-link" href="materials.html">Materials Design</a></li>
-              <li class="nav-item"><a class="nav-link" href="product.html">Product Design</a></li>
-              <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-        </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="materials.html">Materials Design</a></li>
+          <li class="nav-item"><a class="nav-link active" href="product.html">Product Design</a></li>
+          <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -52,14 +50,33 @@
     <header>
       <div class="eyebrow">Freelance Work</div>
       <h1>Product Design Experience</h1>
-      <p class="lead">Outside of academia, I have worked as a freelance product designer for diverse clients. My projects span mechanical components, consumer devices, and manufacturable prototypes. I integrate CAD modeling, simulation, and fabrication considerations into end‑to‑end design solutions, ensuring both functionality and aesthetic appeal.</p>
+      <p class="lead">Outside of academia, I have worked as a freelance product designer for diverse clients. My projects span mechanical components, consumer devices, and manufacturable prototypes. I integrate CAD modeling, simulation, and fabrication considerations into end-to-end design solutions, ensuring both functionality and aesthetic appeal.</p>
     </header>
 
     <section class="projects">
+
+      <!-- Example Project with multiple images -->
       <article class="card">
-        <div class="image-holder">Image Placeholder</div>
+        <div id="carousel1" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images/prosthetic1.jpg" alt="Prototype of prosthetic arm">
+              <div class="carousel-caption">First 3D-printed prototype</div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/prosthetic2.jpg" alt="Assembled prosthetic arm">
+              <div class="carousel-caption">Assembled with adjustable joints</div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
         <h2>Custom Prosthetic Arm Mechanism</h2>
-        <p>Developed a lightweight, low‑cost prosthetic prototype with adjustable joints and user‑friendly modular attachments. Designed with manufacturability and patient comfort in mind, leveraging 3D printing and CNC machining for rapid iteration.</p>
+        <p>Developed a lightweight, low-cost prosthetic prototype with adjustable joints and user-friendly modular attachments...</p>
         <ul>
           <li>Modeled entire assembly in SolidWorks; optimized weight without compromising strength.</li>
           <li>Created multiple prototypes and incorporated user feedback into revisions.</li>
@@ -68,41 +85,36 @@
         <div class="tags"><span class="tag">SolidWorks</span><span class="tag">Additive Manufacturing</span><span class="tag">Medical Devices</span></div>
       </article>
 
+      <!-- Repeat for each project -->
       <article class="card">
-        <div class="image-holder">Image Placeholder</div>
+        <div id="carousel2" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images/drone1.jpg" alt="Drone chassis design">
+              <div class="carousel-caption">Carbon fiber drone frame</div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/drone2.jpg" alt="FEA simulation of drone arm">
+              <div class="carousel-caption">FEA simulation results</div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
         <h2>Consumer Drone Chassis Design</h2>
-        <p>Designed a robust and lightweight drone frame capable of withstanding vibration and minor impacts. Balanced aerodynamic efficiency with structural integrity to extend flight duration and improve stability.</p>
+        <p>Designed a robust and lightweight drone frame capable of withstanding vibration and minor impacts...</p>
         <ul>
           <li>Performed finite element analysis (FEA) on frame arms to minimize failure risk.</li>
-          <li>Optimized geometry for injection molding and carbon‑fiber layup methods.</li>
+          <li>Optimized geometry for injection molding and carbon-fiber layup methods.</li>
           <li>Collaborated with electronics engineers to ensure space for wiring and battery placement.</li>
         </ul>
         <div class="tags"><span class="tag">FEA</span><span class="tag">Composite Design</span><span class="tag">Aerospace</span></div>
       </article>
 
-      <article class="card">
-        <div class="image-holder">Image Placeholder</div>
-        <h2>Household Appliance Component Redesign</h2>
-        <p>Redesigned critical mechanical components for a small kitchen appliance to enhance durability and simplify assembly. Focused on cost reduction through material substitution and part consolidation.</p>
-        <ul>
-          <li>Used Creo Parametric to model revised geometry for high‑stress parts.</li>
-          <li>Conducted lifecycle testing simulations to estimate service life improvements.</li>
-          <li>Reduced part count by 20% while achieving lower material costs.</li>
-        </ul>
-        <div class="tags"><span class="tag">CREO</span><span class="tag">DFMA</span><span class="tag">Consumer Products</span></div>
-      </article>
-
-      <article class="card">
-        <div class="image-holder">Image Placeholder</div>
-        <h2>RC Aircraft & Aeromodelling Projects</h2>
-        <p>Independently designed and built radio‑controlled aircraft from balsa wood throughout high school. Gained hands‑on experience in aerodynamics, structural design, and iterative prototyping, which provided a foundation for later product design work.</p>
-        <ul>
-          <li>Built at least seven RC planes of varying wingspans with optimized airfoils.</li>
-          <li>Member of aeromodelling club; collaborated with peers to test and fly models.</li>
-          <li>Applied learnings in weight distribution, control surfaces, and propulsion integration.</li>
-        </ul>
-        <div class="tags"><span class="tag">Aerodynamics</span><span class="tag">RC Aircraft</span><span class="tag">Hands‑on Design</span></div>
-      </article>
     </section>
   </div>
 </body>
