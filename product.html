@@ -210,40 +210,39 @@
         <div class="tags"><span class="tag">FEA</span><span class="tag">Composite Design</span><span class="tag">Aerospace</span></div>
       </article>
       <!-- Project Finish X-->
-      <!-- Project start Hyperloop-->
+      <!-- Project start Hyperloop X-->
       <article class="card">
-        <!-- === Carousel Start === -->
         <div id="carousel2" class="carousel slide" data-ride="carousel" data-interval="false">
           <div class="carousel-inner">
-            
-            <!-- First item (video active) -->
+            <!-- First video -->
             <div class="carousel-item active">
-              <video class="d-block w-100" autoplay muted playsinline controls>
+              <video class="d-block w-100" autoplay muted>
                 <source src="images/Hloop1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
               </video>
-              <div class="carousel-caption">FEA simulation video</div>
-            </div>
-            <!-- Second item (video) -->
-            <div class="carousel-item">
-              <video class="d-block w-100" autoplay muted playsinline controls>
-                <source src="images/Hloop1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-              <div class="carousel-caption">FEA simulation video</div>
-            </div>
-            <div class="carousel-item">
-              <img src="images/Hloop3.png" class="d-block w-100" alt="Drone chassis design">
-              <div class="carousel-caption">Carbon fiber drone frame</div>
-            </div>
-            <div class="carousel-item">
-              <img src="images/Hloop4.png" class="d-block w-100" alt="Drone chassis design">
-              <div class="carousel-caption">Carbon fiber drone frame</div>
+              <div class="carousel-caption">Drone assembly process</div>
             </div>
       
+            <!-- Second video -->
+            <div class="carousel-item">
+              <video class="d-block w-100" muted>
+                <source src="images/Hloop2.mp4" type="video/mp4">
+              </video>
+              <div class="carousel-caption">Flight testing</div>
+            </div>
+      
+            <!-- Image -->
+            <div class="carousel-item">
+              <img src="images/Hloop3.png" class="d-block w-100" alt="FEA simulation">
+              <div class="carousel-caption">FEA simulation results</div>
+            </div>
+          </div>
+            <div class="carousel-item">
+              <img src="images/Hloop4.png" class="d-block w-100" alt="FEA simulation">
+              <div class="carousel-caption">FEA simulation results</div>
+            </div>
           </div>
       
-          <!-- Carousel controls -->
+          <!-- Controls -->
           <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
           </a>
@@ -251,22 +250,17 @@
             <span class="carousel-control-next-icon"></span>
           </a>
         </div>
-        <!-- === Carousel End === -->
       
-        <!-- === Project Description === -->
-        <h2>Design and Development of Air Ambulance</h2>
+        <h2>Design and Developed Air Ambulance</h2>
         <p>Designed a robust and lightweight drone frame capable of withstanding vibration and minor impacts...</p>
         <ul>
           <li>Performed finite element analysis (FEA) on frame arms to minimize failure risk.</li>
           <li>Optimized geometry for injection molding and carbon-fiber layup methods.</li>
           <li>Collaborated with electronics engineers to ensure space for wiring and battery placement.</li>
         </ul>
-        <div class="tags">
-          <span class="tag">FEA</span>
-          <span class="tag">Composite Design</span>
-          <span class="tag">Aerospace</span>
-        </div>
+        <div class="tags"><span class="tag">FEA</span><span class="tag">Composite Design</span><span class="tag">Aerospace</span></div>
       </article>
+       <!-- Project finish Hyperloop X-->
     </section>
   </div>
   <script>
@@ -297,6 +291,31 @@
     // Autoplay the first slide on load (if it's a video)
     const firstSlide = carousel.querySelector('.carousel-item.active');
     handleSlide(firstSlide);
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const carousel = $('#carousel2');
+    const items = carousel.find('.carousel-item');
+
+    items.each(function () {
+      const video = $(this).find('video').get(0);
+      if (video) {
+        video.addEventListener('ended', function () {
+          carousel.carousel('next'); // go to next slide when video ends
+          const nextItem = carousel.find('.carousel-item.active video').get(0);
+          if (nextItem) {
+            nextItem.play(); // autoplay next video if it exists
+          }
+        });
+      }
+    });
+
+    // Start playing first video automatically
+    const firstVideo = items.eq(0).find('video').get(0);
+    if (firstVideo) {
+      firstVideo.play();
+    }
   });
 </script>
 </body>
