@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Freelance Product Design — M. Waseem Ashraf</title>
+  <title>Product Design — M. Waseem Ashraf</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -173,7 +173,133 @@
         <div class="tags"><span class="tag">FEA</span><span class="tag">Composite Design</span><span class="tag">Aerospace</span></div>
       </article>
       <!-- Project Finish SAR-->
+      <!-- Project Start X-->
+      <article class="card">
+        <div id="carousel2" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images/SAR1.png" alt="Drone chassis design">
+              <div class="carousel-caption">Carbon fiber drone frame</div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/SAR2.png" alt="FEA simulation of drone arm">
+              <div class="carousel-caption">FEA simulation results</div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/SAR3.png" alt="FEA simulation of drone arm">
+              <div class="carousel-caption">FEA simulation results</div>
+            </div>
+            <div class="carousel-item">
+              <img src="images/SAR4.png" alt="FEA simulation of drone arm">
+              <div class="carousel-caption">FEA simulation results</div>
+            </div>
+          <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+        <h2>Desing and Developed Air Ambulance</h2>
+        <p>Designed a robust and lightweight drone frame capable of withstanding vibration and minor impacts...</p>
+        <ul>
+          <li>Performed finite element analysis (FEA) on frame arms to minimize failure risk.</li>
+          <li>Optimized geometry for injection molding and carbon-fiber layup methods.</li>
+          <li>Collaborated with electronics engineers to ensure space for wiring and battery placement.</li>
+        </ul>
+        <div class="tags"><span class="tag">FEA</span><span class="tag">Composite Design</span><span class="tag">Aerospace</span></div>
+      </article>
+      <!-- Project Finish X-->
+      <!-- Project start Hyperloop-->
+      <article class="card">
+        <!-- === Carousel Start === -->
+        <div id="carousel2" class="carousel slide" data-ride="carousel" data-interval="false">
+          <div class="carousel-inner">
+            
+            <!-- First item (active) -->
+            <div class="carousel-item active">
+              <img src="images/SAR1.png" class="d-block w-100" alt="Drone chassis design">
+              <div class="carousel-caption">Carbon fiber drone frame</div>
+            </div>
+      
+            <!-- Second item (video example, autoplay until finished) -->
+            <div class="carousel-item">
+              <video class="d-block w-100" autoplay muted playsinline controls>
+                <source src="videos/drone_sim.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="carousel-caption">FEA simulation video</div>
+            </div>
+      
+            <!-- Third item -->
+            <div class="carousel-item">
+              <img src="images/SAR2.png" class="d-block w-100" alt="FEA simulation of drone arm">
+              <div class="carousel-caption">FEA simulation results</div>
+            </div>
+      
+            <!-- Fourth item -->
+            <div class="carousel-item">
+              <img src="images/SAR3.png" class="d-block w-100" alt="FEA simulation results">
+              <div class="carousel-caption">FEA results continued</div>
+            </div>
+      
+          </div>
+      
+          <!-- Carousel controls -->
+          <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+        <!-- === Carousel End === -->
+      
+        <!-- === Project Description === -->
+        <h2>Design and Development of Air Ambulance</h2>
+        <p>Designed a robust and lightweight drone frame capable of withstanding vibration and minor impacts...</p>
+        <ul>
+          <li>Performed finite element analysis (FEA) on frame arms to minimize failure risk.</li>
+          <li>Optimized geometry for injection molding and carbon-fiber layup methods.</li>
+          <li>Collaborated with electronics engineers to ensure space for wiring and battery placement.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">FEA</span>
+          <span class="tag">Composite Design</span>
+          <span class="tag">Aerospace</span>
+        </div>
+      </article>
     </section>
   </div>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.getElementById('mediaCarousel');
+    const bsCarousel = new bootstrap.Carousel(carousel, { interval: false });
+
+    function handleSlide(slide) {
+      // Pause + reset all videos
+      const videos = carousel.querySelectorAll('video');
+      videos.forEach(v => { v.pause(); v.currentTime = 0; });
+
+      // If current slide has a video, play it and advance only after it ends
+      const video = slide.querySelector('video');
+      if (video) {
+        video.play();
+        video.onended = () => {
+          bsCarousel.next();
+        };
+      }
+    }
+
+    // When slide changes
+    carousel.addEventListener('slid.bs.carousel', function (event) {
+      handleSlide(event.relatedTarget);
+    });
+
+    // Autoplay the first slide on load (if it's a video)
+    const firstSlide = carousel.querySelector('.carousel-item.active');
+    handleSlide(firstSlide);
+  });
+</script>
 </body>
 </html>
