@@ -322,31 +322,52 @@
           <span class="tag">FEA</span><span class="tag">Composite Design</span><span class="tag">Aerospace</span>
         </div>
       </article>
-      
-      <!-- Script to auto advance when video ends -->
-      <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var carousel = $('#carousel2');
-      
-        // For each video inside the carousel
-        carousel.find('video').each(function () {
-          this.addEventListener('ended', function () {
-            carousel.carousel('next'); // go to next slide when video ends
-          });
-        });
-      
-        // Auto-play videos when slide becomes active
-        carousel.on('slid.bs.carousel', function (e) {
-          var $currentSlide = $(e.relatedTarget);
-          var $video = $currentSlide.find('video').get(0);
-          if ($video) {
-            $video.play();
-          }
-        });
-      });
-      </script>
-
     </section>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var carousel = $('#carousel2');
+    
+      // When a slide finishes transitioning
+      carousel.on('slid.bs.carousel', function (e) {
+        var $currentSlide = $(e.relatedTarget);
+        var $video = $currentSlide.find('video').get(0);
+    
+        if ($video) {
+          // Pause all other videos first
+          carousel.find('video').each(function () {
+            this.pause();
+            this.currentTime = 0;
+          });
+          // Then play the active one
+          $video.play();
+        } else {
+          // If it's an image, auto-advance after 5s
+          setTimeout(function () {
+            carousel.carousel('next');
+          }, 5000);
+        }
+      });
+    
+      // Start first video if active on load
+      var $firstVideo = carousel.find('.carousel-item.active video').get(0);
+      if ($firstVideo) {
+        $firstVideo.play();
+      } else {
+        // If the first slide is an image, advance after 5s
+        setTimeout(function () {
+          carousel.carousel('next');
+        }, 5000);
+      }
+    
+      // Also listen for video "ended" to move to next slide
+      carousel.find('video').each(function () {
+        this.addEventListener('ended', function () {
+          carousel.carousel('next');
+        });
+      });
+    });
+    </script>
+
 </body>
 </html>
