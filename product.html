@@ -270,104 +270,98 @@
       </article>
        <!-- Project finish Hyperloop X-->
       <article class="card">
-        <div id="carousel2" class="carousel slide" data-ride="carousel" data-interval="false">
-          <div class="carousel-inner">
-      
-            <!-- First video -->
-            <div class="carousel-item active">
-              <video class="d-block w-100" autoplay muted>
-                <source src="images/Hloop1.mp4" type="video/mp4">
-              </video>
-              <div class="carousel-caption">Drone assembly process</div>
-            </div>
-      
-            <!-- Second video -->
-            <div class="carousel-item">
-              <video class="d-block w-100" muted>
-                <source src="images/Hloop2.mp4" type="video/mp4">
-              </video>
-              <div class="carousel-caption">Flight testing</div>
-            </div>
-      
-            <!-- Image -->
-            <div class="carousel-item">
-              <img src="images/Hloop3.png" class="d-block w-100" alt="FEA simulation">
-              <div class="carousel-caption">FEA simulation results</div>
-            </div>
-      
-            <!-- Another Image -->
-            <div class="carousel-item">
-              <img src="images/Hloop4.png" class="d-block w-100" alt="FEA simulation">
-              <div class="carousel-caption">FEA simulation results</div>
-            </div>
+      <div id="carousel2" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+    
+          <!-- Video 1 -->
+          <div class="carousel-item active">
+            <video class="d-block w-100" muted playsinline>
+              <source src="images/Hloop1.mp4" type="video/mp4">
+            </video>
+            <div class="carousel-caption">Drone assembly process</div>
           </div>
-      
-          <!-- Controls -->
-          <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </a>
-          <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </a>
+    
+          <!-- Video 2 -->
+          <div class="carousel-item">
+            <video class="d-block w-100" muted playsinline>
+              <source src="images/Hloop2.mp4" type="video/mp4">
+            </video>
+            <div class="carousel-caption">Flight testing</div>
+          </div>
+    
+          <!-- Image -->
+          <div class="carousel-item">
+            <img src="images/Hloop3.png" class="d-block w-100" alt="FEA simulation">
+            <div class="carousel-caption">FEA simulation results</div>
+          </div>
+    
+          <!-- Image -->
+          <div class="carousel-item">
+            <img src="images/Hloop4.png" class="d-block w-100" alt="FEA simulation">
+            <div class="carousel-caption">FEA simulation results</div>
+          </div>
+    
         </div>
-      
-        <h2>Design and Developed Air Ambulance</h2>
-        <p>Designed a robust and lightweight drone frame capable of withstanding vibration and minor impacts...</p>
-        <ul>
-          <li>Performed finite element analysis (FEA) on frame arms to minimize failure risk.</li>
-          <li>Optimized geometry for injection molding and carbon-fiber layup methods.</li>
-          <li>Collaborated with electronics engineers to ensure space for wiring and battery placement.</li>
-        </ul>
-        <div class="tags">
-          <span class="tag">FEA</span><span class="tag">Composite Design</span><span class="tag">Aerospace</span>
-        </div>
-      </article>
+    
+        <!-- Controls -->
+        <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    
+      <h2>Design and Developed Air Ambulance</h2>
+      <p>Designed a robust and lightweight drone frame capable of withstanding vibration and minor impacts...</p>
+      <ul>
+        <li>Performed finite element analysis (FEA) on frame arms to minimize failure risk.</li>
+        <li>Optimized geometry for injection molding and carbon-fiber layup methods.</li>
+        <li>Collaborated with electronics engineers to ensure space for wiring and battery placement.</li>
+      </ul>
+      <div class="tags"><span class="tag">FEA</span><span class="tag">Composite Design</span><span class="tag">Aerospace</span></div>
+    </article>
+
     </section>
   </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var carousel = $('#carousel2');
-    
-      // When a slide finishes transitioning
-      carousel.on('slid.bs.carousel', function (e) {
-        var $currentSlide = $(e.relatedTarget);
-        var $video = $currentSlide.find('video').get(0);
-    
-        if ($video) {
-          // Pause all other videos first
-          carousel.find('video').each(function () {
-            this.pause();
-            this.currentTime = 0;
-          });
-          // Then play the active one
-          $video.play();
-        } else {
-          // If it's an image, auto-advance after 5s
-          setTimeout(function () {
-            carousel.carousel('next');
-          }, 5000);
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+  var $carousel = $('#carousel2');
+
+  function playCurrentVideo() {
+    var $current = $carousel.find('.carousel-item.active video').get(0);
+    if ($current) {
+      $current.currentTime = 0;
+      $current.play();
+      // When video ends, move to next slide
+      $current.onended = function() {
+        $carousel.carousel('next');
+      };
+    }
+  }
+
+  // Start first video or set timeout for first image
+  playCurrentVideo();
+
+  // When slide changes
+  $carousel.on('slid.bs.carousel', function () {
+    playCurrentVideo();
+  });
+
+  // For images: auto-advance after 5s
+  $carousel.find('.carousel-item img').each(function() {
+    var img = this;
+    $(img).parent().on('slide.bs.carousel', function () {
+      setTimeout(function () {
+        if ($(img).parent().hasClass('active')) {
+          $carousel.carousel('next');
         }
-      });
-    
-      // Start first video if active on load
-      var $firstVideo = carousel.find('.carousel-item.active video').get(0);
-      if ($firstVideo) {
-        $firstVideo.play();
-      } else {
-        // If the first slide is an image, advance after 5s
-        setTimeout(function () {
-          carousel.carousel('next');
-        }, 5000);
-      }
-    
-      // Also listen for video "ended" to move to next slide
-      carousel.find('video').each(function () {
-        this.addEventListener('ended', function () {
-          carousel.carousel('next');
-        });
-      });
+      }, 5000);
     });
-    </script>
+  });
+});
+</script>
+
 
 </body>
 </html>
