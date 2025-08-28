@@ -41,6 +41,33 @@
     .aside li { margin: 6px 0; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    /* ===== Nav styling (moved here) ===== */
+    .top-nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 12px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .top-nav a {
+      text-decoration: none;
+      color: #222;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+    .top-nav a:hover {
+      background: #f5f5f5;
+    }
+    .top-nav a.active {
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .top-nav { justify-content: flex-start; padding-left: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -54,36 +81,6 @@
     <a href="contact.html">Contact</a>
   </nav>
 </header>
-
-<style>
-  /* Minimal styling to mirror the simple nav on product.html */
-  .top-nav {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 12px;
-    border-bottom: 1px solid #e5e5e5;
-  }
-  .top-nav a {
-    text-decoration: none;
-    color: #222;
-    padding: 6px 10px;
-    border-radius: 8px;
-  }
-  .top-nav a:hover {
-    background: #f5f5f5;
-  }
-  .top-nav a.active {
-    font-weight: 600;
-    text-decoration: underline;
-  }
-  @media (max-width: 600px) {
-    .top-nav { justify-content: flex-start; padding-left: 16px; }
-  }
-</style>
-<!-- ===== /Header ===== --
   <div class="wrap">
     <header>
       <div>
