@@ -268,64 +268,85 @@
           </div>
         </div>
       </article>
-
        <!-- Project finish Hyperloop X-->
-    </section>
-  </div>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const carousel = document.getElementById('mediaCarousel');
-    const bsCarousel = new bootstrap.Carousel(carousel, { interval: false });
-
-    function handleSlide(slide) {
-      // Pause + reset all videos
-      const videos = carousel.querySelectorAll('video');
-      videos.forEach(v => { v.pause(); v.currentTime = 0; });
-
-      // If current slide has a video, play it and advance only after it ends
-      const video = slide.querySelector('video');
-      if (video) {
-        video.play();
-        video.onended = () => {
-          bsCarousel.next();
-        };
-      }
-    }
-
-    // When slide changes
-    carousel.addEventListener('slid.bs.carousel', function (event) {
-      handleSlide(event.relatedTarget);
-    });
-
-    // Autoplay the first slide on load (if it's a video)
-    const firstSlide = carousel.querySelector('.carousel-item.active');
-    handleSlide(firstSlide);
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const carousel = $('#carousel2');
-    const items = carousel.find('.carousel-item');
-
-    items.each(function () {
-      const video = $(this).find('video').get(0);
-      if (video) {
-        video.addEventListener('ended', function () {
-          carousel.carousel('next'); // go to next slide when video ends
-          const nextItem = carousel.find('.carousel-item.active video').get(0);
-          if (nextItem) {
-            nextItem.play(); // autoplay next video if it exists
+      <article class="card">
+        <div id="carousel2" class="carousel slide" data-ride="carousel" data-interval="false">
+          <div class="carousel-inner">
+      
+            <!-- First video -->
+            <div class="carousel-item active">
+              <video class="d-block w-100" autoplay muted>
+                <source src="images/Hloop1.mp4" type="video/mp4">
+              </video>
+              <div class="carousel-caption">Drone assembly process</div>
+            </div>
+      
+            <!-- Second video -->
+            <div class="carousel-item">
+              <video class="d-block w-100" muted>
+                <source src="images/Hloop2.mp4" type="video/mp4">
+              </video>
+              <div class="carousel-caption">Flight testing</div>
+            </div>
+      
+            <!-- Image -->
+            <div class="carousel-item">
+              <img src="images/Hloop3.png" class="d-block w-100" alt="FEA simulation">
+              <div class="carousel-caption">FEA simulation results</div>
+            </div>
+      
+            <!-- Another Image -->
+            <div class="carousel-item">
+              <img src="images/Hloop4.png" class="d-block w-100" alt="FEA simulation">
+              <div class="carousel-caption">FEA simulation results</div>
+            </div>
+          </div>
+      
+          <!-- Controls -->
+          <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+      
+        <h2>Design and Developed Air Ambulance</h2>
+        <p>Designed a robust and lightweight drone frame capable of withstanding vibration and minor impacts...</p>
+        <ul>
+          <li>Performed finite element analysis (FEA) on frame arms to minimize failure risk.</li>
+          <li>Optimized geometry for injection molding and carbon-fiber layup methods.</li>
+          <li>Collaborated with electronics engineers to ensure space for wiring and battery placement.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">FEA</span><span class="tag">Composite Design</span><span class="tag">Aerospace</span>
+        </div>
+      </article>
+      
+      <!-- Script to auto advance when video ends -->
+      <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var carousel = $('#carousel2');
+      
+        // For each video inside the carousel
+        carousel.find('video').each(function () {
+          this.addEventListener('ended', function () {
+            carousel.carousel('next'); // go to next slide when video ends
+          });
+        });
+      
+        // Auto-play videos when slide becomes active
+        carousel.on('slid.bs.carousel', function (e) {
+          var $currentSlide = $(e.relatedTarget);
+          var $video = $currentSlide.find('video').get(0);
+          if ($video) {
+            $video.play();
           }
         });
-      }
-    });
+      });
+      </script>
 
-    // Start playing first video automatically
-    const firstVideo = items.eq(0).find('video').get(0);
-    if (firstVideo) {
-      firstVideo.play();
-    }
-  });
-</script>
+    </section>
+  </div>
 </body>
 </html>
