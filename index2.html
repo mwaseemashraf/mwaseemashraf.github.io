@@ -1,103 +1,378 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>M. Waseem Ashraf</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PhD Student in Mechanical Engineering at BYU">
-  <link rel="shortcut icon" href="/static/img/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Lora:700|Work+Sans:400,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <link href="app.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Waseem Ashraf | Portfolio</title>
+  <style>
+    :root{
+      --bg:#eef2f6;
+      --paper:#f7f9fc;
+      --ink:#0f172a;
+      --muted:#475569;
+      --line:#cbd5e1;
+      --pill:#e2e8f0;
+      --shadow: 0 14px 40px rgba(2,6,23,.14);
+      --radius: 18px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background: radial-gradient(1200px 600px at 30% -10%, #ffffff 0%, var(--bg) 60%);
+      color:var(--ink);
+    }
+
+    .wrap{max-width:1120px; margin:0 auto; padding:28px 18px 64px;}
+
+    /* ===== Top header (name + contacts) ===== */
+    .top{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:20px 22px;
+    }
+
+    .top-grid{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:18px;
+      align-items:start;
+    }
+
+    .name{
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:clamp(28px, 3.8vw, 44px);
+      line-height:1.05;
+      margin:0;
+    }
+
+    .subtitle{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+
+    .divider{
+      height:44px;
+      width:1px;
+      background:var(--line);
+      margin:0 10px;
+      justify-self:center;
+      align-self:stretch;
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:auto;
+      gap:10px;
+      justify-items:end;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .contact a{color:inherit; text-decoration:none}
+    .contact a:hover{color:var(--ink)}
+
+    .contact-item{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      white-space:nowrap;
+    }
+
+    .icon{
+      width:18px; height:18px;
+      display:inline-block;
+      color:var(--ink);
+      opacity:.85;
+    }
+
+    /* ===== Project poster card ===== */
+    .section{
+      margin-top:18px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .section-head{
+      padding:18px 22px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      border-bottom:1px solid rgba(203,213,225,.6);
+    }
+
+    .section-title{
+      margin:0;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-weight:900;
+      font-size:18px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      color:var(--muted);
+      font-weight:800;
+      letter-spacing:.06em;
+      font-size:12px;
+      text-transform:uppercase;
+    }
+
+    .brand-badge{
+      width:24px; height:24px; border-radius:999px;
+      background:linear-gradient(135deg, #e2e8f0, #ffffff);
+      border:1px solid var(--line);
+      display:grid; place-items:center;
+    }
+
+    .brand-badge svg{width:14px; height:14px; opacity:.85}
+
+    .poster{
+      padding:16px 22px 22px;
+    }
+
+    .media-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+
+    .media{
+      background:#ffffff;
+      border:1px solid rgba(203,213,225,.85);
+      border-radius:16px;
+      overflow:hidden;
+      position:relative;
+      min-height:200px;
+    }
+
+    /* Replace these placeholder blocks with <img> tags if you have real images */
+    .placeholder{
+      width:100%; height:100%;
+      background:
+        linear-gradient(180deg, rgba(241,245,249,.9), rgba(255,255,255,.9)),
+        repeating-linear-gradient(45deg, rgba(148,163,184,.25) 0 10px, rgba(148,163,184,.12) 10px 20px);
+      display:grid;
+      place-items:center;
+      padding:18px;
+      color:rgba(15,23,42,.75);
+      text-align:center;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+
+    .pill{
+      position:absolute;
+      top:10px;
+      left:10px;
+      background:rgba(226,232,240,.95);
+      border:1px solid rgba(203,213,225,.9);
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:rgba(15,23,42,.8);
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      box-shadow:0 8px 18px rgba(2,6,23,.08);
+    }
+
+    .pill.right{left:auto; right:10px}
+
+    .content-grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:14px;
+    }
+
+    .box{
+      background:rgba(255,255,255,.6);
+      border:1px solid rgba(203,213,225,.85);
+      border-radius:16px;
+      padding:14px 14px 12px;
+    }
+
+    .box h3{
+      margin:0 0 8px;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.10em;
+      color:rgba(15,23,42,.78);
+    }
+
+    .box ul{margin:0; padding-left:18px; color:rgba(15,23,42,.86)}
+    .box li{margin:6px 0; line-height:1.35}
+
+    .meta{
+      margin-top:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:12px;
+      letter-spacing:.04em;
+      flex-wrap:wrap;
+    }
+
+    .chip{
+      background:rgba(226,232,240,.75);
+      border:1px solid rgba(203,213,225,.9);
+      padding:8px 10px;
+      border-radius:999px;
+      display:flex; align-items:center; gap:8px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .media-grid, .content-grid{grid-template-columns:1fr}
+      .media{min-height:220px}
+    }
+
+    @media (max-width: 720px){
+      .top-grid{grid-template-columns:1fr}
+      .divider{display:none}
+      .contact{justify-items:start}
+    }
+  </style>
 </head>
 <body>
+  <div class="wrap">
 
-<!-- Header -->
-<div class="container-fluid header py-4">
-  <div class="row align-items-center">
-    <div class="col-md-8 d-flex align-items-center">
-      <img src="images/waseem.jpeg" alt="Waseem Ashraf Photo" class="rounded-circle mr-3" style="width:120px;">
-      <div>
-        <h1 class="mb-1"><a href="/">M. Waseem Ashraf</a></h1>
-        <h4 class="mb-1">PhD Candidate · Mechanical Engineering</h4>
-        <h5><a href="https://www.byu.edu">Brigham Young University</a></h5>
-        <div class="mt-2">
-          <a href="https://github.com/mwaseemashraf"><img class="social" src="images/github.png" alt="github"></a>
-          <a href="https://www.linkedin.com/in/m-waseem-ashraf/"><img class="social" src="images/linkedin.png" alt="linkedin"></a>
-          <a href="mailto:waseemashraf1584@gmail.com"><img class="social" src="images/mail.png" alt="email"></a>
+    <!-- HEADER (matches the poster-style you shared) -->
+    <header class="top">
+      <div class="top-grid">
+        <div>
+          <h1 class="name">M. Waseem Ashraf</h1>
+          <p class="subtitle">PhD Mechanical Engineering • Brigham Young University</p>
+        </div>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <div class="contact" aria-label="Contact">
+          <div class="contact-item">
+            <span class="icon" aria-hidden="true">
+              <!-- mail icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity=".25"/><path d="M4 7l8 6 8-6"/></svg>
+            </span>
+            <a href="mailto:waseemashraf1584@gmail.com">waseemashraf1584@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="icon" aria-hidden="true">
+              <!-- link icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 1 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 1 1-7-7l1-1"/></svg>
+            </span>
+            <a href="https://linkedin.com/in/m-waseem-ashraf" target="_blank" rel="noreferrer">linkedin.com/in/m-waseem-ashraf</a>
+          </div>
+          <div class="contact-item">
+            <span class="icon" aria-hidden="true">
+              <!-- phone icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.06a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <a href="tel:+13852868600">(385) 286-8600</a>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </header>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mx-auto">
-      <li class="nav-item"><a class="nav-link" href="index.html">About</a></li>
-      <li class="nav-item"><a class="nav-link" href="materials.html">Materials Design</a></li>
-      <li class="nav-item"><a class="nav-link" href="product.html">Product Design</a></li>
-      <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
-      <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- About Section -->
-<div class="container my-5">
-  <div class="row">
-    <div class="col-lg-8">
-      <h2 class="mb-4">About Me</h2>
-      <p>Hello! I'm <strong>M. Waseem Ashraf</strong>, a PhD student in 
-        <a href="https://me.byu.edu">Mechanical Engineering</a> at 
-        <a href="https://www.byu.edu">Brigham Young University</a>, working under 
-        <a href="https://www.me.byu.edu/directory/eric-homer">Dr. Eric R. Homer</a>. 
-        My research focuses on shape memory alloys, phase transformations, and the coupling between 
-        mechanical behavior and microstructural evolution. I use computational methods such as finite element 
-        modeling, crystal plasticity, and machine learning to better understand and predict material behavior.
-      </p>
-      <p>
-        Outside the lab, I love exploring the outdoors—whether it’s hiking trails, mountain biking through 
-        Utah’s canyons, or playing basketball with friends. These activities keep me energized and ready 
-        for new challenges.
-      </p>
-    </div>
-
-    <div class="col-lg-4">
-      <div class="card shadow-sm mb-4">
-        <img src="images/mountainbiking.jpeg" class="card-img-top rounded-top" alt="Kings Peak">
-        <div class="card-body text-center">
-          <p class="card-text text-muted">Mountain biking on Khyiv mountain near Provo·</p>
+    <!-- ======================= PROJECT BLOCK START ======================= -->
+<!-- COPY EVERYTHING from PROJECT BLOCK START to PROJECT BLOCK END -->
+    <section class="section" aria-label="Project">
+      <div class="section-head">
+        <h2 class="section-title">Dielectric Tensor from DFPT in VASP</h2>
+        <div class="brand" title="Small mark / logo">
+          <span class="brand-badge" aria-hidden="true">
+            <!-- simple heart-ish mark -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.8 4.6a5.3 5.3 0 0 0-7.5 0L12 5.9l-1.3-1.3a5.3 5.3 0 0 0-7.5 7.5l1.3 1.3L12 20.9l7.5-7.5 1.3-1.3a5.3 5.3 0 0 0 0-7.5Z" opacity=".55"/>
+            </svg>
+          </span>
+          <span>Research Highlight</span>
         </div>
       </div>
-    </div>
+
+      <div class="poster">
+        <div class="media-grid">
+          <div class="media">
+            <span class="pill">Structure / Supercell</span>
+            <div class="placeholder">Add Image 1<br/>e.g., structure render</div>
+          </div>
+          <div class="media">
+            <span class="pill">Method Diagram</span>
+            <div class="placeholder">Add Image 2<br/>e.g., workflow schematic</div>
+          </div>
+          <div class="media">
+            <span class="pill right">Experimental / Result</span>
+            <div class="placeholder">Add Image 3<br/>e.g., plot or photo</div>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="box">
+            <h3>What?</h3>
+            <ul>
+              <li>Compute lattice + ionic contributions to the dielectric tensor.</li>
+              <li>Decompose contributions by phonon mode (IR-active modes).</li>
+              <li>Report mode effective charges and per-mode trace contributions.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>How?</h3>
+            <ul>
+              <li>DFPT (IBRION=8, LEPSILON) in <strong>VASP</strong>.</li>
+              <li>Post-process eigenvectors, masses, and Born charges.</li>
+              <li>Validate convergence vs. ENCUT / k-mesh / LREAL.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Results</h3>
+            <ul>
+              <li>Per-mode dielectric contributions in a compact table.</li>
+              <li>Identify dominant polar modes and symmetry trends.</li>
+              <li>Reusable pipeline for Zr–Y–O systems and beyond.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="meta">
+          <div class="chip">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6H9"/><path d="M20 12H9"/><path d="M20 18H9"/><path d="M5 6h.01"/><path d="M5 12h.01"/><path d="M5 18h.01"/></svg>
+            </span>
+            <span>Keywords: DFPT, phonons, Born charges, dielectric</span>
+          </div>
+          <div class="chip">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M12 4h9"/><path d="M4 9h16"/><path d="M4 15h16"/></svg>
+            </span>
+            <span>Tools: VASP • Python • NumPy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- ======================= PROJECT BLOCK END ========================= -->
+
+    <!-- Paste the copied PROJECT BLOCK here for each new project -->
+
   </div>
-</div>
-
-<!-- Background Section -->
-<div class="container my-5">
-  <h2 class="mb-4">Background</h2>
-  <p>I’ve been a maker for as long as I can remember. Back in 7th grade, I joined my school’s aeromodelling club and built my first RC plane out of balsa wood. By the time I finished high school, I had designed and flown at least seven planes, each one teaching me something new about aerodynamics, materials, and design.</p>
-  
-  <div class="card shadow-sm my-4 text-center">
-    <img src="images/highschool_1.png" class="card-img-top mx-auto" style="width:300px;" alt="RC Plane">
-    <div class="card-body">
-      <p class="card-text text-muted">Presenting my RC airplane during Parents Day (9th grade)</p>
-    </div>
-  </div>
-  
-  <p>That early start grew into a career in engineering. During my undergraduate studies at the Pakistan Institute of Engineering and Applied Sciences, I worked on ambitious projects like designing an air ambulance using aerodynamic simulations and leading a Hyperloop Pod Competition team developing passive magnetic levitation systems. Later, I expanded my skills through teaching and freelance design, creating solutions ranging from MEMS devices and microfluidic systems to aerospace components and medical device prototypes.</p>
-
-  <p>Now, as a PhD candidate at BYU, I study the mechanical and electrical properties (including dielectric tensor) of advanced ceramics through NSF-sponsored research. Alongside research, I also serve as President of the Mechanical Engineering Graduate Association, helping foster collaboration and community among graduate students.</p>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
 </body>
 </html>
