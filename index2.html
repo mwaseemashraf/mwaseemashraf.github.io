@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Waseem Ashraf | Portfolio</title>
+  <title>Product Design — M. Waseem Ashraf</title>
   <style>
     :root{
       --bg:#eef2f6;
@@ -24,6 +24,9 @@
       background: radial-gradient(1200px 600px at 30% -10%, #ffffff 0%, var(--bg) 60%);
       color:var(--ink);
     }
+
+    a{color:inherit}
+    a:hover{color:var(--ink)}
 
     .wrap{max-width:1120px; margin:0 auto; padding:28px 18px 64px;}
 
@@ -81,7 +84,6 @@
     }
 
     .contact a{color:inherit; text-decoration:none}
-    .contact a:hover{color:var(--ink)}
 
     .contact-item{
       display:flex;
@@ -90,14 +92,70 @@
       white-space:nowrap;
     }
 
-    .icon{
-      width:18px; height:18px;
-      display:inline-block;
-      color:var(--ink);
-      opacity:.85;
+    .icon{width:18px;height:18px;display:inline-block;color:var(--ink);opacity:.85;}
+
+    /* ===== Nav ===== */
+    .nav{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
     }
 
-    /* ===== Project poster card ===== */
+    .nav a{
+      text-decoration:none;
+      background:rgba(226,232,240,.75);
+      border:1px solid rgba(203,213,225,.95);
+      padding:9px 12px;
+      border-radius:999px;
+      color:rgba(15,23,42,.86);
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+
+    .nav a.active{
+      background:rgba(15,23,42,.92);
+      border-color:rgba(15,23,42,.92);
+      color:#fff;
+    }
+
+    /* ===== Intro ===== */
+    .intro{
+      margin-top:18px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 22px;
+    }
+
+    .eyebrow{
+      margin:0;
+      color:var(--muted);
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+
+    .page-title{
+      margin:10px 0 6px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      font-weight:900;
+      font-size:22px;
+    }
+
+    .lead{
+      margin:0;
+      color:rgba(15,23,42,.82);
+      line-height:1.6;
+      max-width:80ch;
+    }
+
+    /* ===== Project card ===== */
     .section{
       margin-top:18px;
       background:var(--paper);
@@ -139,12 +197,9 @@
       border:1px solid var(--line);
       display:grid; place-items:center;
     }
-
     .brand-badge svg{width:14px; height:14px; opacity:.85}
 
-    .poster{
-      padding:16px 22px 22px;
-    }
+    .poster{padding:16px 22px 22px;}
 
     .media-grid{
       display:grid;
@@ -153,31 +208,80 @@
       align-items:stretch;
     }
 
-    .media{
+    /* ===== Carousel (per window) ===== */
+    .carousel{
+      position:relative;
       background:#ffffff;
       border:1px solid rgba(203,213,225,.85);
       border-radius:16px;
       overflow:hidden;
-      position:relative;
-      min-height:200px;
+      min-height:260px;
     }
 
-    /* Replace these placeholder blocks with <img> tags if you have real images */
-    .placeholder{
-      width:100%; height:100%;
-      background:
-        linear-gradient(180deg, rgba(241,245,249,.9), rgba(255,255,255,.9)),
-        repeating-linear-gradient(45deg, rgba(148,163,184,.25) 0 10px, rgba(148,163,184,.12) 10px 20px);
+    .carousel .slides{
+      display:flex;
+      width:100%;
+      transition:transform 320ms ease;
+      will-change:transform;
+    }
+
+    .carousel .slide{
+      flex:0 0 100%;
+      position:relative;
+      min-height:260px;
+      background:#ffffff;
+    }
+
+    .carousel img,
+    .carousel video{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      background:#ffffff;
+    }
+
+    .nav-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      border:1px solid rgba(203,213,225,.95);
+      background:rgba(247,249,252,.92);
+      box-shadow:0 10px 22px rgba(2,6,23,.10);
+      cursor:pointer;
       display:grid;
       place-items:center;
-      padding:18px;
-      color:rgba(15,23,42,.75);
-      text-align:center;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:12px;
+      z-index:2;
     }
+    .nav-btn:hover{ background:#ffffff; }
+    .nav-btn.prev{ left:10px; }
+    .nav-btn.next{ right:10px; }
+
+    .dots{
+      position:absolute;
+      left:50%;
+      bottom:10px;
+      transform:translateX(-50%);
+      display:flex;
+      gap:8px;
+      z-index:2;
+      background:rgba(247,249,252,.82);
+      border:1px solid rgba(203,213,225,.75);
+      padding:6px 10px;
+      border-radius:999px;
+      box-shadow:0 10px 18px rgba(2,6,23,.08);
+    }
+
+    .dot{
+      width:8px; height:8px;
+      border-radius:999px;
+      background:rgba(15,23,42,.25);
+      cursor:pointer;
+    }
+    .dot.active{ background:rgba(15,23,42,.75); }
 
     .pill{
       position:absolute;
@@ -193,10 +297,11 @@
       letter-spacing:.04em;
       text-transform:uppercase;
       box-shadow:0 8px 18px rgba(2,6,23,.08);
+      z-index:2;
     }
-
     .pill.right{left:auto; right:10px}
 
+    /* ===== What/How/Results ===== */
     .content-grid{
       margin-top:14px;
       display:grid;
@@ -222,6 +327,8 @@
     .box ul{margin:0; padding-left:18px; color:rgba(15,23,42,.86)}
     .box li{margin:6px 0; line-height:1.35}
 
+    .box p{margin:0; line-height:1.55; color:rgba(15,23,42,.84)}
+
     .meta{
       margin-top:14px;
       display:flex;
@@ -242,28 +349,74 @@
       display:flex; align-items:center; gap:8px;
     }
 
+    /* ===== Compact list section (freelance) ===== */
+    .grid2{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media (min-width: 900px){
+      .grid2{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .mini{
+      background:rgba(255,255,255,.6);
+      border:1px solid rgba(203,213,225,.85);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .mini h3{
+      margin:0 0 6px;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+    .tag{
+      background:rgba(226,232,240,.75);
+      border:1px solid rgba(203,213,225,.9);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:rgba(15,23,42,.78);
+    }
+
     /* ===== Responsive ===== */
     @media (max-width: 980px){
       .media-grid, .content-grid{grid-template-columns:1fr}
-      .media{min-height:220px}
-    }
-
-    @media (max-width: 720px){
+      .carousel, .carousel .slide{min-height:240px}
       .top-grid{grid-template-columns:1fr}
       .divider{display:none}
       .contact{justify-items:start}
+    }
+
+    @media (min-width: 981px){
+      .carousel, .carousel .slide{min-height:310px}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
 
-    <!-- HEADER (matches the poster-style you shared) -->
+    <!-- Header (poster style) -->
     <header class="top">
       <div class="top-grid">
         <div>
           <h1 class="name">M. Waseem Ashraf</h1>
-          <p class="subtitle">PhD Mechanical Engineering • Brigham Young University</p>
+          <p class="subtitle">Product Design • Simulation • Prototyping</p>
+          <nav class="nav" aria-label="Site navigation">
+            <a href="index.html">About</a>
+            <a href="materials.html">Materials Design</a>
+            <a class="active" href="product.html">Product Design</a>
+            <a href="awards.html">Awards &amp; Recognition</a>
+            <a href="cv.html">CV</a>
+          </nav>
         </div>
 
         <div class="divider" aria-hidden="true"></div>
@@ -271,21 +424,18 @@
         <div class="contact" aria-label="Contact">
           <div class="contact-item">
             <span class="icon" aria-hidden="true">
-              <!-- mail icon -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity=".25"/><path d="M4 7l8 6 8-6"/></svg>
             </span>
             <a href="mailto:waseemashraf1584@gmail.com">waseemashraf1584@gmail.com</a>
           </div>
           <div class="contact-item">
             <span class="icon" aria-hidden="true">
-              <!-- link icon -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 1 1 7 7l-1 1"/><path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 1 1-7-7l1-1"/></svg>
             </span>
             <a href="https://linkedin.com/in/m-waseem-ashraf" target="_blank" rel="noreferrer">linkedin.com/in/m-waseem-ashraf</a>
           </div>
           <div class="contact-item">
             <span class="icon" aria-hidden="true">
-              <!-- phone icon -->
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.3 1.7.54 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.06a2 2 0 0 1 2.11-.45c.8.24 1.64.42 2.5.54A2 2 0 0 1 22 16.92z"/></svg>
             </span>
             <a href="tel:+13852868600">(385) 286-8600</a>
@@ -294,35 +444,94 @@
       </div>
     </header>
 
+    <!-- Intro -->
+    <section class="intro">
+      <p class="eyebrow">Freelance Work</p>
+      <h2 class="page-title">Product Design Experience</h2>
+      <p class="lead">
+        Outside of academia, I have worked as a freelance product designer for diverse clients. My projects span mechanical
+        components, consumer devices, and manufacturable prototypes. I integrate CAD modeling, simulation, and fabrication
+        considerations into end-to-end design solutions, ensuring both functionality and aesthetic appeal.
+      </p>
+    </section>
+
     <!-- ======================= PROJECT BLOCK START ======================= -->
-<!-- COPY EVERYTHING from PROJECT BLOCK START to PROJECT BLOCK END -->
+    <!-- COPY EVERYTHING from PROJECT BLOCK START to PROJECT BLOCK END -->
     <section class="section" aria-label="Project">
       <div class="section-head">
-        <h2 class="section-title">Dielectric Tensor from DFPT in VASP</h2>
-        <div class="brand" title="Small mark / logo">
+        <h2 class="section-title">Designed and Developed Air Ambulance (Team of three)</h2>
+        <div class="brand" title="Category">
           <span class="brand-badge" aria-hidden="true">
-            <!-- simple heart-ish mark -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.8 4.6a5.3 5.3 0 0 0-7.5 0L12 5.9l-1.3-1.3a5.3 5.3 0 0 0-7.5 7.5l1.3 1.3L12 20.9l7.5-7.5 1.3-1.3a5.3 5.3 0 0 0 0-7.5Z" opacity=".55"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10z" opacity=".55"/></svg>
           </span>
-          <span>Research Highlight</span>
+          <span>Aerospace • FEA • Prototyping</span>
         </div>
       </div>
 
       <div class="poster">
+        <!-- Three windows, each is its own carousel -->
         <div class="media-grid">
-          <div class="media">
-            <span class="pill">Structure / Supercell</span>
-            <div class="placeholder">Add Image 1<br/>e.g., structure render</div>
+          <!-- Window 1 carousel -->
+          <div class="carousel" data-autoplay="false" aria-label="Media window 1">
+            <span class="pill">Structure / Frame</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="nav-btn next" type="button" aria-label="Next slide">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <div class="slides">
+              <div class="slide"><img src="images/fyp0.jpg" alt="Aileron frame"></div>
+              <div class="slide"><img src="images/fyp1.jpg" alt="Test assembly of fuselage"></div>
+              <div class="slide"><img src="images/fyp6.jpg" alt="Fuselage assembly"></div>
+            </div>
+            <div class="dots" aria-label="Slide navigation">
+              <span class="dot" role="button" tabindex="0" aria-label="Go to slide 1"></span>
+              <span class="dot" role="button" tabindex="0" aria-label="Go to slide 2"></span>
+              <span class="dot" role="button" tabindex="0" aria-label="Go to slide 3"></span>
+            </div>
           </div>
-          <div class="media">
-            <span class="pill">Method Diagram</span>
-            <div class="placeholder">Add Image 2<br/>e.g., workflow schematic</div>
+
+          <!-- Window 2 carousel -->
+          <div class="carousel" data-autoplay="false" aria-label="Media window 2">
+            <span class="pill">Analysis / Sim</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="nav-btn next" type="button" aria-label="Next slide">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <div class="slides">
+              <div class="slide"><img src="images/fyp10.jpg" alt="Testing fuselage designs for drag"></div>
+              <div class="slide"><img src="images/fyp11.jpg" alt="Full body pressure contour"></div>
+              <div class="slide"><img src="images/fyp12.jpg" alt="Topology optimization"></div>
+            </div>
+            <div class="dots" aria-label="Slide navigation">
+              <span class="dot" role="button" tabindex="0" aria-label="Go to slide 1"></span>
+              <span class="dot" role="button" tabindex="0" aria-label="Go to slide 2"></span>
+              <span class="dot" role="button" tabindex="0" aria-label="Go to slide 3"></span>
+            </div>
           </div>
-          <div class="media">
-            <span class="pill right">Experimental / Result</span>
-            <div class="placeholder">Add Image 3<br/>e.g., plot or photo</div>
+
+          <!-- Window 3 carousel -->
+          <div class="carousel" data-autoplay="false" aria-label="Media window 3">
+            <span class="pill right">Final Assembly</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="nav-btn next" type="button" aria-label="Next slide">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <div class="slides">
+              <div class="slide"><img src="images/fyp5.jpg" alt="2m wingspan air ambulance"></div>
+              <div class="slide"><img src="images/fyp13.jpg" alt="Wing assembly with engine mount"></div>
+              <div class="slide"><img src="images/fyp14.jpg" alt="Ribs, spars and engine mount assembly"></div>
+            </div>
+            <div class="dots" aria-label="Slide navigation">
+              <span class="dot" role="button" tabindex="0" aria-label="Go to slide 1"></span>
+              <span class="dot" role="button" tabindex="0" aria-label="Go to slide 2"></span>
+              <span class="dot" role="button" tabindex="0" aria-label="Go to slide 3"></span>
+            </div>
           </div>
         </div>
 
@@ -330,76 +539,89 @@
           <div class="box">
             <h3>What?</h3>
             <ul>
-              <li>Compute lattice + ionic contributions to the dielectric tensor.</li>
-              <li>Decompose contributions by phonon mode (IR-active modes).</li>
-              <li>Report mode effective charges and per-mode trace contributions.</li>
+              <li>Designed a robust, lightweight drone frame to withstand vibration and minor impacts.</li>
+              <li>Built a digital twin for inertial calculations and component sizing.</li>
             </ul>
           </div>
           <div class="box">
             <h3>How?</h3>
             <ul>
-              <li>DFPT (IBRION=8, LEPSILON) in <strong>VASP</strong>.</li>
-              <li>Post-process eigenvectors, masses, and Born charges.</li>
-              <li>Validate convergence vs. ENCUT / k-mesh / LREAL.</li>
+              <li>Performed FEA and topology optimization focused on mass minimization.</li>
+              <li>Designed carbon-fiber based VTOL mechanism for short takeoff/landing.</li>
+              <li>Collaborated with a 3-person team to complete the build in 3 months.</li>
             </ul>
           </div>
           <div class="box">
             <h3>Results</h3>
             <ul>
-              <li>Per-mode dielectric contributions in a compact table.</li>
-              <li>Identify dominant polar modes and symmetry trends.</li>
-              <li>Reusable pipeline for Zr–Y–O systems and beyond.</li>
+              <li>Functional prototype with 2 m wingspan and 28cc engines.</li>
+              <li>Improved structural stiffness-to-weight ratio via optimized wing geometry.</li>
             </ul>
           </div>
         </div>
 
         <div class="meta">
-          <div class="chip">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6H9"/><path d="M20 12H9"/><path d="M20 18H9"/><path d="M5 6h.01"/><path d="M5 12h.01"/><path d="M5 18h.01"/></svg>
-            </span>
-            <span>Keywords: DFPT, phonons, Born charges, dielectric</span>
-          </div>
-          <div class="chip">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M12 4h9"/><path d="M4 9h16"/><path d="M4 15h16"/></svg>
-            </span>
-            <span>Tools: VASP • Python • NumPy</span>
-          </div>
+          <div class="chip"><span>Tags: FEA • Composite Design • Aerospace</span></div>
+          <div class="chip"><span>Tools: CAD • Simulation • Prototyping</span></div>
         </div>
       </div>
     </section>
-<!-- ======================= PROJECT BLOCK END ========================= -->
+    <!-- ======================= PROJECT BLOCK END ========================= -->
 
     <!-- ======================= PROJECT BLOCK START ======================= -->
-<!-- COPY EVERYTHING from PROJECT BLOCK START to PROJECT BLOCK END -->
     <section class="section" aria-label="Project">
       <div class="section-head">
-        <h2 class="section-title">Dielectric Tensor from DFPT in VASP</h2>
-        <div class="brand" title="Small mark / logo">
+        <h2 class="section-title">FEA and Thermal Modeling of Human Head Exposure to Mobile Phones</h2>
+        <div class="brand" title="Publication">
           <span class="brand-badge" aria-hidden="true">
-            <!-- simple heart-ish mark -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.8 4.6a5.3 5.3 0 0 0-7.5 0L12 5.9l-1.3-1.3a5.3 5.3 0 0 0-7.5 7.5l1.3 1.3L12 20.9l7.5-7.5 1.3-1.3a5.3 5.3 0 0 0 0-7.5Z" opacity=".55"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h14v16H4z" opacity=".35"/><path d="M8 8h6"/><path d="M8 12h8"/><path d="M8 16h8"/><path d="M18 8l2-2v14h-2"/></svg>
           </span>
-          <span>Research Highlight</span>
+          <span>FEA • SAR • Thermal</span>
         </div>
       </div>
 
       <div class="poster">
         <div class="media-grid">
-          <div class="media">
-            <span class="pill">Structure / Supercell</span>
-            <div class="placeholder">Add Image 1<br/>e.g., structure render</div>
+          <div class="carousel" data-autoplay="false" aria-label="SAR window 1">
+            <span class="pill">Temperature</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="nav-btn next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div class="slides">
+              <div class="slide"><img src="images/SAR1.png" alt="Temperature change on skin"></div>
+              <div class="slide"><img src="images/SAR2.png" alt="Temperature contour across head layers"></div>
+              <div class="slide"><img src="images/SAR3.png" alt="Temperature drop vs distance"></div>
+            </div>
+            <div class="dots"><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span></div>
           </div>
-          <div class="media">
-            <span class="pill">Method Diagram</span>
-            <div class="placeholder">Add Image 2<br/>e.g., workflow schematic</div>
+
+          <div class="carousel" data-autoplay="false" aria-label="SAR window 2">
+            <span class="pill">Absorbed Power</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="nav-btn next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div class="slides">
+              <div class="slide"><img src="images/SAR4.png" alt="Absorbed power across layers"></div>
+              <div class="slide"><img src="images/SAR2.png" alt="Alternate contour view"></div>
+              <div class="slide"><img src="images/SAR1.png" alt="Surface temperature view"></div>
+            </div>
+            <div class="dots"><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span></div>
           </div>
-          <div class="media">
-            <span class="pill right">Experimental / Result</span>
-            <div class="placeholder">Add Image 3<br/>e.g., plot or photo</div>
+
+          <div class="carousel" data-autoplay="false" aria-label="SAR window 3">
+            <span class="pill right">Publication</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="nav-btn next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div class="slides">
+              <div class="slide">
+                <img src="images/SAR3.png" alt="SAR trend plot">
+              </div>
+              <div class="slide">
+                <img src="images/SAR1.png" alt="Temperature change plot">
+              </div>
+              <div class="slide">
+                <img src="images/SAR2.png" alt="Layer contour plot">
+              </div>
+            </div>
+            <div class="dots"><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span></div>
           </div>
         </div>
 
@@ -407,47 +629,376 @@
           <div class="box">
             <h3>What?</h3>
             <ul>
-              <li>Compute lattice + ionic contributions to the dielectric tensor.</li>
-              <li>Decompose contributions by phonon mode (IR-active modes).</li>
-              <li>Report mode effective charges and per-mode trace contributions.</li>
+              <li>Built a four-layer human-head model to simulate SAR and temperature rise due to HF EM exposure.</li>
+              <li>Published in Proceedings of SPIE (Optical Interactions with Tissue and Cells XXXII).</li>
             </ul>
           </div>
           <div class="box">
             <h3>How?</h3>
             <ul>
-              <li>DFPT (IBRION=8, LEPSILON) in <strong>VASP</strong>.</li>
-              <li>Post-process eigenvectors, masses, and Born charges.</li>
-              <li>Validate convergence vs. ENCUT / k-mesh / LREAL.</li>
+              <li>Modeled skin, fat, bone, and brain with realistic dielectric + thermal properties.</li>
+              <li>Computed SAR distribution and localized heating with coupled FEA thermal analysis.</li>
             </ul>
           </div>
           <div class="box">
             <h3>Results</h3>
             <ul>
-              <li>Per-mode dielectric contributions in a compact table.</li>
-              <li>Identify dominant polar modes and symmetry trends.</li>
-              <li>Reusable pipeline for Zr–Y–O systems and beyond.</li>
+              <li>Assessed exposure safety by linking SAR magnitude to thermal response.</li>
+              <li>Provided insights to guide safer device designs.</li>
+              <li>
+                Publication: <a href="https://doi.org/10.1117/12.2577260" target="_blank" rel="noopener">SPIE paper</a>
+              </li>
             </ul>
           </div>
         </div>
 
         <div class="meta">
-          <div class="chip">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6H9"/><path d="M20 12H9"/><path d="M20 18H9"/><path d="M5 6h.01"/><path d="M5 12h.01"/><path d="M5 18h.01"/></svg>
-            </span>
-            <span>Keywords: DFPT, phonons, Born charges, dielectric</span>
+          <div class="chip"><span>Tags: FEA • Dielectric Heating • SAR • Thermal Analysis</span></div>
+          <div class="chip"><span>Tools: COMSOL / Multiphysics</span></div>
+        </div>
+      </div>
+    </section>
+    <!-- ======================= PROJECT BLOCK END ========================= -->
+
+    <!-- ======================= PROJECT BLOCK START ======================= -->
+    <section class="section" aria-label="Project">
+      <div class="section-head">
+        <h2 class="section-title">Headed Hyperloop Pod Competition Team (20 members)</h2>
+        <div class="brand" title="Electromagnetics">
+          <span class="brand-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="M12 16v6"/><path d="M6 12H2"/><path d="M22 12h-4"/><path d="M16.24 7.76l4.24-4.24" opacity=".5"/><path d="M3.52 20.48l4.24-4.24" opacity=".5"/></svg>
+          </span>
+          <span>Maxwell • Passive Levitation</span>
+        </div>
+      </div>
+
+      <div class="poster">
+        <div class="media-grid">
+          <div class="carousel" data-autoplay="false" aria-label="Hyperloop window 1">
+            <span class="pill">Video / Eddy Currents</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="nav-btn next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div class="slides">
+              <div class="slide"><video src="images/Hloop2.mp4" controls preload="metadata" playsinline></video></div>
+              <div class="slide"><video src="images/Hloop1.mp4" controls preload="metadata" playsinline></video></div>
+              <div class="slide"><img src="images/Hloop3.png" alt="Normalized levitation force"></div>
+            </div>
+            <div class="dots"><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span></div>
           </div>
-          <div class="chip">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M12 4h9"/><path d="M4 9h16"/><path d="M4 15h16"/></svg>
-            </span>
-            <span>Tools: VASP • Python • NumPy</span>
+
+          <div class="carousel" data-autoplay="false" aria-label="Hyperloop window 2">
+            <span class="pill">Results</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="nav-btn next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div class="slides">
+              <div class="slide"><img src="images/Hloop4.png" alt="Drag force vs velocity"></div>
+              <div class="slide"><img src="images/Hloop3.png" alt="Levitation force"></div>
+              <div class="slide"><video src="images/Hloop1.mp4" controls preload="metadata" playsinline></video></div>
+            </div>
+            <div class="dots"><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span></div>
+          </div>
+
+          <div class="carousel" data-autoplay="false" aria-label="Hyperloop window 3">
+            <span class="pill right">Figures</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="nav-btn next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div class="slides">
+              <div class="slide"><img src="images/Hloop3.png" alt="Normalized levitation force"></div>
+              <div class="slide"><img src="images/Hloop4.png" alt="Drag force vs velocity"></div>
+              <div class="slide"><video src="images/Hloop2.mp4" controls preload="metadata" playsinline></video></div>
+            </div>
+            <div class="dots"><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span></div>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="box">
+            <h3>What?</h3>
+            <ul>
+              <li>Designed a passive levitation mechanism and optimized magnet geometry in ANSYS Maxwell.</li>
+              <li>Led a 20-member competition team effort (theoretical study; funding constraints).</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>How?</h3>
+            <ul>
+              <li>Evaluated rotating-magnet concepts for lower-speed lift (abandoned due to high heating).</li>
+              <li>Studied drag and lift behavior across speed to reduce takeoff velocity.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Results</h3>
+            <ul>
+              <li>Generated force–velocity trends and field visualizations for design direction.</li>
+              <li>Documented constraints and tradeoffs (heating vs lift).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="meta">
+          <div class="chip"><span>Tags: FEA • Hyperloop Competition • Passive Levitation</span></div>
+          <div class="chip"><span>Tools: ANSYS Maxwell</span></div>
+        </div>
+      </div>
+    </section>
+    <!-- ======================= PROJECT BLOCK END ========================= -->
+
+    <!-- ======================= PROJECT BLOCK START ======================= -->
+    <section class="section" aria-label="Project">
+      <div class="section-head">
+        <h2 class="section-title">Microfluidic Cancer Cell Counter Based on the Coulter Principle</h2>
+        <div class="brand" title="Biomedical">
+          <span class="brand-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 8h18"/><path d="M5 8v14h14V8"/></svg>
+          </span>
+          <span>COMSOL • Microfluidics</span>
+        </div>
+      </div>
+
+      <div class="poster">
+        <div class="media-grid">
+          <div class="carousel" data-autoplay="false" aria-label="Coulter window 1">
+            <span class="pill">Device</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="nav-btn next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div class="slides">
+              <div class="slide"><img src="images/c1.png" alt="Actual microfluidic device"></div>
+              <div class="slide"><img src="images/c2.png" alt="Digital twin"></div>
+              <div class="slide"><img src="images/c3.png" alt="Input/output pulses"></div>
+            </div>
+            <div class="dots"><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span></div>
+          </div>
+
+          <div class="carousel" data-autoplay="false" aria-label="Coulter window 2">
+            <span class="pill">Signals</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="nav-btn next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div class="slides">
+              <div class="slide"><img src="images/c4.png" alt="Cell radius vs pulse voltage"></div>
+              <div class="slide"><img src="images/c5.png" alt="Differential voltage vs conductivity"></div>
+              <div class="slide"><img src="images/c6.png" alt="Cell distance vs detected voltage"></div>
+            </div>
+            <div class="dots"><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span></div>
+          </div>
+
+          <div class="carousel" data-autoplay="false" aria-label="Coulter window 3">
+            <span class="pill right">Performance</span>
+            <button class="nav-btn prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="nav-btn next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            <div class="slides">
+              <div class="slide"><img src="images/c7.png" alt="Cell resistance vs detected voltage"></div>
+              <div class="slide"><img src="images/c6.png" alt="Cell distance vs detected voltage"></div>
+              <div class="slide"><img src="images/c5.png" alt="Voltage vs conductivity"></div>
+            </div>
+            <div class="dots"><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span><span class="dot" role="button" tabindex="0"></span></div>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="box">
+            <h3>What?</h3>
+            <ul>
+              <li>Developed a microfluidic device leveraging the Coulter Principle to count and characterize cells.</li>
+              <li>Designed detection to identify cancer-cell signatures via electrophoretic behavior.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>How?</h3>
+            <ul>
+              <li>Used COMSOL to simulate fluid flow and particle trajectories for geometry refinement.</li>
+              <li>Optimized electrode placement and channel features to improve measurement robustness.</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h3>Results</h3>
+            <ul>
+              <li>Improved sensitivity via iterative multiphysics modeling.</li>
+              <li>Generated design insights for reliable cell counting and discrimination.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="meta">
+          <div class="chip"><span>Tags: COMSOL • Microfluidics • Coulter Principle • Biomedical Devices</span></div>
+          <div class="chip"><span>Focus: Device design + signal interpretation</span></div>
+        </div>
+      </div>
+    </section>
+    <!-- ======================= PROJECT BLOCK END ========================= -->
+
+    <!-- Freelance projects (compact grid) -->
+    <section class="section" aria-label="Freelance projects">
+      <div class="section-head">
+        <h2 class="section-title">Freelance Simulation &amp; Design Projects</h2>
+        <div class="brand" title="Fiverr">
+          <span class="brand-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M4 12h10"/><path d="M4 17h14"/></svg>
+          </span>
+          <span>
+            <a href="https://www.fiverr.com/flupieas?public_mode=true" target="_blank" rel="noopener" style="text-decoration:none;">View Fiverr profile</a>
+          </span>
+        </div>
+      </div>
+
+      <div class="poster">
+        <div class="grid2">
+          <div class="mini">
+            <h3>Heat Exchanger Design &amp; Optimization</h3>
+            <p>Optimized a shell-and-tube heat exchanger using ANSYS; emphasized standards compliance and heat dissipation.</p>
+            <div class="tagrow"><span class="tag">ANSYS</span><span class="tag">Thermal</span><span class="tag">Heat Exchanger</span></div>
+          </div>
+
+          <div class="mini">
+            <h3>Electromagnetic Simulation</h3>
+            <p>Studied inductance vs frequency/orientation for internal and external coil configurations.</p>
+            <div class="tagrow"><span class="tag">COMSOL</span><span class="tag">EM</span><span class="tag">Sensors</span></div>
+          </div>
+
+          <div class="mini">
+            <h3>MEMS Gripper Design</h3>
+            <p>Designed a microscale gripper in COMSOL with emphasis on precision and scalability.</p>
+            <div class="tagrow"><span class="tag">COMSOL</span><span class="tag">MEMS</span><span class="tag">Design</span></div>
+          </div>
+
+          <div class="mini">
+            <h3>Nanoscale Material Simulation</h3>
+            <p>Simulated elastoplastic interactions between graphene oxide hemispheres using finite element methods.</p>
+            <div class="tagrow"><span class="tag">FEM</span><span class="tag">Nanomaterials</span><span class="tag">Graphene Oxide</span></div>
+          </div>
+
+          <div class="mini">
+            <h3>Process Optimization for Manufacturing</h3>
+            <p>Optimized thermal, structural, and fluid parameters in manufacturing workflows using ANSYS-based simulation.</p>
+            <div class="tagrow"><span class="tag">ANSYS</span><span class="tag">Process</span><span class="tag">Manufacturing</span></div>
+          </div>
+
+          <div class="mini">
+            <h3>Medical Device Design in Microgravity</h3>
+            <p>Modeled blood flow in zero-gravity conditions and supported design recommendations for extreme environments.</p>
+            <div class="tagrow"><span class="tag">CFD</span><span class="tag">Medical</span><span class="tag">Space</span></div>
+          </div>
+
+          <div class="mini">
+            <h3>Custom Fluid Handling Device</h3>
+            <p>Designed fluid-handling for organ-on-a-chip platforms; reproduced arterial pulsatile flow via CFD + analytics.</p>
+            <div class="tagrow"><span class="tag">CFD</span><span class="tag">Biomedical</span><span class="tag">Organ-on-a-Chip</span></div>
+          </div>
+
+          <div class="mini">
+            <h3>Microfluidic Flow Simulation</h3>
+            <p>Modeled species transport in serpentine channels; optimized microfluidic performance for biomedical use.</p>
+            <div class="tagrow"><span class="tag">COMSOL</span><span class="tag">Microfluidics</span><span class="tag">Transport</span></div>
+          </div>
+
+          <div class="mini">
+            <h3>Optical Simulation for Product Testing</h3>
+            <p>Simulated coupled ray + wave optics for backscatter intensity in liquid samples with high-index spheres.</p>
+            <div class="tagrow"><span class="tag">Optics</span><span class="tag">Ray Tracing</span><span class="tag">COMSOL</span></div>
           </div>
         </div>
       </div>
     </section>
-<!-- ======================= PROJECT BLOCK END ========================= -->
 
   </div>
+
+  <script>
+    // =============================
+    // Simple multi-carousel support
+    // - Works for images and videos
+    // - Optional autoplay via data-autoplay + data-interval
+    // - Pauses videos when slide changes
+    // =============================
+
+    function setActiveDot(dots, idx){
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    function pauseAllVideos(carousel){
+      carousel.querySelectorAll('video').forEach(v => {
+        try { v.pause(); } catch(e) {}
+      });
+    }
+
+    function showSlide(carousel, idx){
+      const slidesEl = carousel.querySelector('.slides');
+      const slides = Array.from(carousel.querySelectorAll('.slide'));
+      const dots = Array.from(carousel.querySelectorAll('.dot'));
+      const n = slides.length;
+      if (n === 0) return;
+
+      const clamped = ((idx % n) + n) % n;
+      carousel.dataset.index = String(clamped);
+      slidesEl.style.transform = `translateX(-${clamped * 100}%)`;
+      setActiveDot(dots, clamped);
+      pauseAllVideos(carousel);
+    }
+
+    function initCarousel(carousel){
+      const slides = Array.from(carousel.querySelectorAll('.slide'));
+      const prev = carousel.querySelector('.nav-btn.prev');
+      const next = carousel.querySelector('.nav-btn.next');
+      const dots = Array.from(carousel.querySelectorAll('.dot'));
+      if (slides.length === 0) return;
+
+      showSlide(carousel, 0);
+
+      prev?.addEventListener('click', () => {
+        const i = Number(carousel.dataset.index || '0');
+        showSlide(carousel, i - 1);
+      });
+      next?.addEventListener('click', () => {
+        const i = Number(carousel.dataset.index || '0');
+        showSlide(carousel, i + 1);
+      });
+
+      dots.forEach((d, i) => {
+        d.addEventListener('click', () => showSlide(carousel, i));
+        d.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            showSlide(carousel, i);
+          }
+        });
+      });
+
+      const autoplay = carousel.getAttribute('data-autoplay') === 'true';
+      const interval = Number(carousel.getAttribute('data-interval') || '4500');
+      let timer = null;
+
+      function start(){
+        if (!autoplay) return;
+        stop();
+        timer = window.setInterval(() => {
+          const i = Number(carousel.dataset.index || '0');
+          showSlide(carousel, i + 1);
+        }, interval);
+      }
+      function stop(){
+        if (timer) window.clearInterval(timer);
+        timer = null;
+      }
+
+      carousel.addEventListener('mouseenter', stop);
+      carousel.addEventListener('mouseleave', start);
+      carousel.addEventListener('focusin', stop);
+      carousel.addEventListener('focusout', start);
+
+      carousel.querySelectorAll('video').forEach(v => {
+        v.addEventListener('play', stop);
+        v.addEventListener('pause', start);
+        v.addEventListener('ended', start);
+      });
+
+      carousel.addEventListener('keydown', (e) => {
+        const i = Number(carousel.dataset.index || '0');
+        if (e.key === 'ArrowLeft') showSlide(carousel, i - 1);
+        if (e.key === 'ArrowRight') showSlide(carousel, i + 1);
+      });
+
+      start();
+    }
+
+    document.querySelectorAll('.carousel').forEach(initCarousel);
+  </script>
 </body>
 </html>
