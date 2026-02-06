@@ -632,33 +632,48 @@
           </div>
         </div>
 
-        <div class="content-grid">
-          <div class="box">
-            <h3>What?</h3>
-            <ul>
-              <li>Built a four-layer human-head model to simulate SAR and temperature rise due to HF EM exposure.</li>
-              <li>Published in Proceedings of SPIE (Optical Interactions with Tissue and Cells XXXII).</li>
-            </ul>
+          <div class="content-grid">
+            <div class="box">
+              <h3>What?</h3>
+              <ul>
+                <li>Developed a realistic four-layer human head model (skin, fat, bone, brain) to evaluate electromagnetic exposure from mobile-phone-scale antennas.</li>
+                <li>Computed tissue-specific Specific Absorption Rate (SAR) and resulting temperature rise under high-frequency electromagnetic radiation.</li>
+                <li>Investigated exposure effects at two commonly used communication frequencies: 900 MHz and 1200 MHz.</li>
+                <li>Quantified how antenna–head separation distance influences absorbed power and thermal response.</li>
+                <li>Extended prior simplified spheroidal and oval models by using an IEEE-standard, anatomically realistic head geometry.</li>
+                <li>Published peer-reviewed results in SPIE Proceedings (Optical Interactions with Tissue and Cells XXXII).</li>
+              </ul>
+            </div>
+          
+            <div class="box">
+              <h3>How?</h3>
+              <ul>
+                <li>Implemented the IEEE 1528-2013 SAM Phantom geometry and subdivided it into four anatomically distinct tissue domains.</li>
+                <li>Assigned frequency-dependent dielectric, electrical, and thermal properties to each tissue layer based on established literature.</li>
+                <li>Used COMSOL Multiphysics with Electromagnetic Waves (Frequency Domain) and Bioheat Transfer modules.</li>
+                <li>Modeled a patch antenna source driven at 45.5 V and varied its distance from the head between 1–4 cm.</li>
+                <li>Computed SAR using local electric field distributions and validated absorbed power via independent volumetric integration.</li>
+                <li>Coupled SAR outputs into bioheat equations to predict spatially resolved temperature rise within tissues.</li>
+              </ul>
+            </div>
+          
+            <div class="box">
+              <h3>Results</h3>
+              <ul>
+                <li>Demonstrated that SAR values increase significantly at 1200 MHz compared to 900 MHz across all tissue layers.</li>
+                <li>Showed that the brain absorbs the largest fraction of total electromagnetic power despite not being the outermost layer.</li>
+                <li>Observed the highest temperature rise near the skin, with measurable thermal penetration into deeper brain tissue.</li>
+                <li>Established that increasing antenna distance from 1 cm to 2 cm results in a sharp, nonlinear reduction in SAR and temperature rise.</li>
+                <li>Confirmed strong sensitivity of both SAR and thermal response to antenna placement, informing safer device design guidelines.</li>
+                <li>
+                  Publication:
+                  <a href="https://doi.org/10.1117/12.2577260" target="_blank" rel="noopener">
+                    SPIE Proceedings Paper
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="box">
-            <h3>How?</h3>
-            <ul>
-              <li>Modeled skin, fat, bone, and brain with realistic dielectric + thermal properties.</li>
-              <li>Computed SAR distribution and localized heating with coupled FEA thermal analysis.</li>
-            </ul>
-          </div>
-          <div class="box">
-            <h3>Results</h3>
-            <ul>
-              <li>Assessed exposure safety by linking SAR magnitude to thermal response.</li>
-              <li>Provided insights to guide safer device designs.</li>
-              <li>
-                Publication: <a href="https://doi.org/10.1117/12.2577260" target="_blank" rel="noopener">SPIE paper</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
         <div class="meta">
           <div class="chip"><span>Tags: FEA • Dielectric Heating • SAR • Thermal Analysis</span></div>
           <div class="chip"><span>Tools: COMSOL / Multiphysics</span></div>
