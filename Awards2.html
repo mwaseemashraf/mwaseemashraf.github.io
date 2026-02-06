@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Awards & Recognition — M. Waseem Ashraf</title>
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --panel:#111318;
+      --panel2:#0f1116;
+      --text:#e9edf5;
+      --muted:#aab2c5;
+      --line:rgba(255,255,255,.08);
+      --chip:rgba(255,255,255,.06);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --radius2:14px;
+      --max:1100px;
+      --accent:#9ad6ff;
+      --accent2:#b7ffd6;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(154,214,255,.15), transparent 50%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(183,255,214,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.92}
+
+    /* Header (index2-style) */
+    .top{
+      max-width:var(--max);
+      margin:34px auto 18px;
+      padding:0 20px;
+    }
+    .name{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .name h1{
+      margin:0;
+      font-size:34px;
+      letter-spacing:-.02em;
+    }
+    .subtitle{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-weight:500;
+    }
+
+    .nav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      color:var(--muted);
+      font-weight:600;
+    }
+    .nav a{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    .nav a[aria-current="page"]{
+      color:var(--text);
+      border-color:rgba(154,214,255,.28);
+      background:rgba(154,214,255,.10);
+    }
+
+    .contact{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      color:var(--muted);
+      font-weight:500;
+    }
+    .contact a{
+      border-bottom:1px dashed rgba(255,255,255,.25);
+    }
+
+    /* Sections */
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto 70px;
+      padding:0 20px;
+    }
+    .section{
+      margin-top:26px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:20px 22px 14px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.00));
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .section-title{
+      margin:0;
+      font-size:20px;
+      letter-spacing:-.01em;
+    }
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-weight:600;
+      white-space:nowrap;
+    }
+    .brand-badge{
+      width:28px;
+      height:28px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background:rgba(154,214,255,.14);
+      border:1px solid rgba(154,214,255,.22);
+      color:var(--accent);
+      flex:0 0 auto;
+    }
+    .brand-badge svg{width:16px; height:16px}
+
+    .intro{
+      padding:18px 22px 6px;
+      color:var(--muted);
+      max-width:72ch;
+    }
+
+    /* Two-column award grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+      padding:0 22px 22px;
+    }
+    @media (max-width: 860px){
+      .grid{grid-template-columns:1fr}
+      .name h1{font-size:30px}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background:rgba(15,17,22,.55);
+      border-radius:var(--radius2);
+      padding:16px 16px 14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:radial-gradient(600px 180px at 10% 0%, rgba(154,214,255,.12), transparent 60%),
+                 radial-gradient(500px 160px at 90% 0%, rgba(183,255,214,.10), transparent 55%);
+      pointer-events:none;
+      opacity:.8;
+    }
+    .card > *{position:relative}
+
+    .card h3{
+      margin:0 0 6px;
+      font-size:16px;
+      letter-spacing:-.01em;
+    }
+    .card p{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:10px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--chip);
+      color:var(--muted);
+      font-size:12.5px;
+      font-weight:600;
+    }
+
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      font-weight:650;
+      font-size:13px;
+    }
+    .btn svg{width:16px;height:16px; opacity:.9}
+    .btn:hover{background:rgba(255,255,255,.05)}
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="top">
+    <div class="name">
+      <div>
+        <h1>M. Waseem Ashraf</h1>
+        <div class="subtitle">Product Design • Simulation • Research</div>
+      </div>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="about.html">About</a>
+        <a href="index2.html">Product Design</a>
+        <a href="awards.html" aria-current="page">Awards &amp; Recognition</a>
+        <a href="cv.html">CV</a>
+      </nav>
+    </div>
+
+    <div class="contact" aria-label="Contact">
+      <span><a href="mailto:waseemashraf1584@gmail.com">waseemashraf1584@gmail.com</a></span>
+      <span><a href="https://linkedin.com/in/m-waseem-ashraf" target="_blank" rel="noopener">linkedin.com/in/m-waseem-ashraf</a></span>
+      <span>(385) 286-8600</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="section" aria-label="Awards and Recognition">
+      <div class="section-head">
+        <h2 class="section-title">Awards &amp; Recognition</h2>
+        <div class="brand" title="Highlights">
+          <span class="brand-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 21h8"/><path d="M12 17v4"/>
+              <path d="M7 4h10"/><path d="M17 4v4a5 5 0 0 1-10 0V4"/>
+              <path d="M5 6a3 3 0 0 0 3 3"/><path d="M19 6a3 3 0 0 1-3 3"/>
+            </svg>
+          </span>
+          <span>Fellowships • Honors • Competitions</span>
+        </div>
+      </div>
+
+      <p class="intro">
+        A curated set of fellowships, honors, and achievements recognizing academic excellence,
+        leadership, and contributions to science and engineering.
+      </p>
+
+      <!-- Two-column grid -->
+      <div class="grid">
+        <!-- Fulton -->
+        <article class="card">
+          <h3>Ira A. Fulton Fellowship (BYU)</h3>
+          <p>
+            Recipient of the Ira A. Fulton Fellowship (2021–2022), supporting doctoral research in Mechanical Engineering
+            at Brigham Young University.
+          </p>
+          <div class="meta">
+            <span class="chip">Fellowship</span>
+            <span class="chip">BYU</span>
+            <span class="chip">2021–2022</span>
+          </div>
+          <div class="links">
+            <a class="btn" href="content/fulton.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+              </svg>
+              View selection letter
+            </a>
+          </div>
+        </article>
+
+        <!-- Rhodes -->
+        <article class="card">
+          <h3>Rhodes Scholarship Finalist (Oxford)</h3>
+          <p>
+            Selected as a finalist for the Rhodes Scholarship at the University of Oxford (2018),
+            representing Pakistan in a highly competitive global academic award.
+          </p>
+          <div class="meta">
+            <span class="chip">Scholarship</span>
+            <span class="chip">Oxford</span>
+            <span class="chip">2018</span>
+          </div>
+          <div class="links">
+            <a class="btn" href="content/Rhoder_letter.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+              </svg>
+              Letter from Rhodes Oxford
+            </a>
+            <a class="btn" href="content/Rhodes_cert.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+              </svg>
+              View certificate
+            </a>
+          </div>
+        </article>
+
+        <!-- Best Thesis -->
+        <article class="card">
+          <h3>Best Thesis Award — PIEAS</h3>
+          <p>
+            Awarded a certificate of appreciation for best undergraduate thesis at the
+            Pakistan Institute of Engineering and Applied Sciences (2018).
+          </p>
+          <div class="meta">
+            <span class="chip">Academic Excellence</span>
+            <span class="chip">PIEAS</span>
+            <span class="chip">2018</span>
+          </div>
+          <div class="links">
+            <!-- Your current site link 404s; keep or update once the PDF is in the right place -->
+            <a class="btn" href="pdfs/thesis.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+              </svg>
+              View award
+            </a>
+          </div>
+        </article>
+
+        <!-- Merit -->
+        <article class="card">
+          <h3>Merit Certificate — PIEAS</h3>
+          <p>
+            Recognized with a merit certificate for outstanding academic performance during BS in Mechanical Engineering.
+          </p>
+          <div class="meta">
+            <span class="chip">Academic Merit</span>
+            <span class="chip">PIEAS</span>
+          </div>
+          <div class="links">
+            <a class="btn" href="content/BS_merit.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+              </svg>
+              View certificate
+            </a>
+          </div>
+        </article>
+
+        <!-- KSS -->
+        <article class="card">
+          <h3>Khwarizmi Science Society (KSS)</h3>
+          <p>
+            Lifetime member of the Khwarizmi Science Society (KSS), supporting science outreach and education initiatives.
+          </p>
+          <div class="meta">
+            <span class="chip">Science Outreach</span>
+            <span class="chip">Membership</span>
+            <span class="chip">KSS</span>
+          </div>
+          <div class="links">
+            <!-- Your current site link 404s; keep or update once the PDF is in the right place -->
+            <a class="btn" href="pdfs/kss.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+              </svg>
+              View membership &amp; achievements
+            </a>
+          </div>
+        </article>
+
+        <!-- ASME Glider -->
+        <article class="card">
+          <h3>ASME Glider Competition Winner</h3>
+          <p>
+            Winner of the ASME PIEAS Chapter Glider Competition (2015), demonstrating hands-on design and aerodynamics.
+          </p>
+          <div class="meta">
+            <span class="chip">ASME</span>
+            <span class="chip">Design Competition</span>
+            <span class="chip">2015</span>
+          </div>
+          <div class="links">
+            <a class="btn" href="content/Glider.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+              </svg>
+              View certificate
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
