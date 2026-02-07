@@ -1039,64 +1039,81 @@
 <!-- ======================= PROJECT BLOCK START ======================= -->
 <section class="section" aria-label="Project">
   <div class="section-head">
-    <h2 class="section-title">Motorized Conical Pendulum Experiment for Centripetal Force Validation</h2>
+    <h2 class="section-title">Motorized Conical Pendulum — Centripetal Force & Dynamic Equilibrium Validation</h2>
     <div class="brand" title="Experimental Hardware">
       <span class="brand-badge" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2v6"/>
           <path d="M12 16v6"/>
           <path d="M6 12H2"/>
           <path d="M22 12h-4"/>
+          <path d="M16.24 7.76l4.24-4.24" opacity=".5"/>
+          <path d="M3.52 20.48l4.24-4.24" opacity=".5"/>
         </svg>
       </span>
-      <span>Experimental Mechanics • Motor Control • Instrumentation</span>
+      <span>Motor Control • Instrumentation • Experimental Mechanics</span>
     </div>
   </div>
 
   <div class="poster">
+    <div class="media-grid">
+      <div class="carousel" data-autoplay="false" aria-label="Conical pendulum window 1">
+        <span class="pill">Setup</span>
+        <div class="slides">
+          <!-- Use your own images if you have them; these are placeholders -->
+          <div class="slide"><img src="images/conical_setup.png" alt="Complete experimental setup: conical pendulum, stepper motor controller, webcam, and power supply"></div>
+          <div class="slide"><img src="images/conical_schematic.png" alt="Schematic diagram of conical pendulum geometry and forces"></div>
+        </div>
+      </div>
+
+      <div class="carousel" data-autoplay="false" aria-label="Conical pendulum window 2">
+        <span class="pill">Data Capture</span>
+        <div class="slides">
+          <div class="slide"><img src="images/conical_frames.png" alt="Sample video frames at different RPM values for angle measurement"></div>
+        </div>
+      </div>
+
+      <div class="carousel" data-autoplay="false" aria-label="Conical pendulum window 3">
+        <span class="pill right">Analysis</span>
+        <div class="slides">
+          <div class="slide"><img src="images/conical_analysis.png" alt="ImageJ-based angle measurement and extracted parameters"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="content-grid">
       <div class="box">
         <h3>What?</h3>
         <ul>
-          <li>Designed and implemented a motor-driven conical pendulum system to experimentally study centripetal forces and dynamic equilibrium.</li>
-          <li>Built a repeatable laboratory apparatus to validate theoretical relationships between angular velocity, lift angle, and gravitational acceleration.</li>
-          <li>Integrated mechanical, electrical, and measurement subsystems into a single controlled experimental platform.</li>
-          <li>Focused on hardware reliability, measurement accuracy, and repeatability under varying rotational speeds.</li>
-          <li>Used the system as a physical demonstration of rotational dynamics and force balance.</li>
+          <li>Built a motor-driven conical pendulum platform to experimentally study centripetal force and dynamic equilibrium in rotational motion.</li>
+          <li>Created a controlled, repeatable setup for validating theoretical relationships between angular velocity, lift angle, and gravity.</li>
+          <li>Integrated mechanical, electrical, and measurement subsystems into a complete experimental hardware workflow.</li>
+          <li>Designed the experiment to produce quantifiable results (angles, radii, and period) across a controlled RPM range.</li>
+          <li>Used the system as a validation rig for physics-based models and uncertainty-aware measurement.</li>
         </ul>
       </div>
 
       <div class="box">
         <h3>How?</h3>
         <ul>
-          <li>Coupled a binary conical pendulum assembly to a NEMA17 stepper motor for controlled angular motion.</li>
-          <li>Used a dedicated stepper motor controller (SMC) with analog RPM mode to vary rotational speed continuously up to 100 RPM.</li>
-          <li>Powered the system using a regulated 12 V DC supply and monitored real-time RPM via the controller’s LCD interface.</li>
-          <li>Captured high-speed video of the rotating pendulum and extracted geometric parameters using ImageJ image-processing software.</li>
-          <li>Measured lift angle, radius, and equilibrium length across multiple RPM values and propagated uncertainty from image resolution and camera placement.</li>
-          <li>Validated experimental data against analytical models derived from force balance and rotational kinematics.</li>
+          <li>Drove a binary conical pendulum assembly using a NEMA17 stepper motor controlled by a Qosain Scientific stepper motor controller (SMC).</li>
+          <li>Powered the system from a regulated 12 V DC supply; monitored real-time RPM directly from the controller’s LCD.</li>
+          <li>Operated the controller in Analog RPM mode to sweep speed up to ~100 RPM while maintaining stable rotation.</li>
+          <li>Captured motion using a webcam and extracted lift angle/geometry using ImageJ from individual video frames.</li>
+          <li>Computed centripetal acceleration and used force-balance equations to back-calculate gravitational acceleration (g).</li>
+          <li>Performed uncertainty analysis considering camera perspective, frame rate, and measurement resolution.</li>
         </ul>
       </div>
 
       <div class="box">
         <h3>Results</h3>
         <ul>
-          <li>Observed a clear, repeatable increase in lift angle and radial displacement with increasing angular velocity.</li>
-          <li>Experimentally confirmed the predicted relationship between angular speed, centripetal force, and string tension.</li>
-          <li>Calculated the gravitational acceleration from experimental data with reasonable agreement to the accepted value of <em>g</em>.</li>
-          <li>Identified dominant error sources including camera perspective, frame rate limitations, and angular resolution.</li>
-          <li>Demonstrated a robust experimental hardware platform suitable for instructional labs and dynamic system validation.</li>
+          <li>Observed a repeatable increase in lift angle and orbit radius with increasing RPM, consistent with centripetal-force scaling.</li>
+          <li>Validated the dynamic equilibrium model by matching measured geometry to predicted force-balance relationships.</li>
+          <li>Estimated gravitational acceleration from experimental measurements with reasonable agreement to accepted values.</li>
+          <li>Identified dominant error sources (camera perspective alignment and FPS limitations) and documented mitigation recommendations.</li>
+          <li>Delivered a robust experimental platform suitable for instructional labs and hardware-based validation of rotational dynamics.</li>
         </ul>
-      </div>
-    </div>
-
-    <div class="meta">
-      <div class="chip">
-        <span>Tags: Experimental Mechanics • Stepper Motors • Image Processing • Instrumentation</span>
-      </div>
-      <div class="chip">
-        <span>Focus: Hardware-driven validation of rotational dynamics</span>
       </div>
     </div>
   </div>
